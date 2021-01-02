@@ -10,8 +10,11 @@ weights_path = "yolov4-tiny.weights"
 cfg_path = "yolov4-tiny.cfg"
 
 yolo_net = cv2.dnn.readNetFromDarknet(cfg_path, weights_path)
-yolo_net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
-yolo_net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
+# Uncomment the below 2 lines if you are having OpenCV source build with GPU
+# yolo_net.setPreferableBackend(cv2.dnn.DNN_BACKEND_CUDA)
+# yolo_net.setPreferableTarget(cv2.dnn.DNN_TARGET_CUDA)
+
 ln = yolo_net.getLayerNames()
 ln = [ln[i[0] - 1] for i in yolo_net.getUnconnectedOutLayers()]
 
